@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
    
 jobs:
-   
   build_local:
     runs-on: ubuntu-latest
     steps:
