@@ -23,6 +23,6 @@ jobs:
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:${TIMESTAMP} .
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:${TIMESTAMP}
         docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:latest .
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/www.pknw1.co.uk:latest
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:latest
 
 
