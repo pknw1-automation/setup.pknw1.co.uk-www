@@ -13,9 +13,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: clean
-      run: |
-	sed -i 's/display: flex;p/display: none;p/g' publish/*
+    - name: sed
+      run: sed -i 's/display: flex;p/display: none;p/g' publish/*
     - name: build
       run: |
         TIMESTAMP=$(date +%s)
