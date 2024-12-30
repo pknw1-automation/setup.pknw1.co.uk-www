@@ -1,0 +1,17 @@
+services:
+  caddy-setup:
+    networks:
+      - public
+    image: pknw1/setup.pknw1.co.uk:latest
+    container_name: caddy-setup
+    hostname: caddy-setup
+    environment:
+      - VIRTUAL_HOST=setup.pknw1.co.uk
+      - VIRTUAL_PORT=80
+
+
+networks:
+  public:
+    external: true
+    name: public
+

@@ -1,0 +1,6 @@
+
+:80 {
+        root * /var/www
+        file_server
+}
+

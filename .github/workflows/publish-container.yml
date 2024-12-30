@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  workflow_dispatch:
+   
+jobs:
+   
+  build_local:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: clean
+      run: |
+	for f in $(ls ./publish/*html)
+	do
+  	  sed -i 's/display: flex;p/display: none;p/g' $f
+	done
+    - name: build
+      run: |
+        TIMESTAMP=$(date +%s)
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:${TIMESTAMP} .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:${TIMESTAMP}
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/setup.pknw1.co.uk:latest .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/www.pknw1.co.uk:latest
+
+
