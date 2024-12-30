@@ -16,10 +16,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: clean
       run: |
-	for f in $(ls ./publish/*html)
-	do
-  	  sed -i 's/display: flex;p/display: none;p/g' $f
-	done
+	sed -i 's/display: flex;p/display: none;p/g' publish/*
     - name: build
       run: |
         TIMESTAMP=$(date +%s)
